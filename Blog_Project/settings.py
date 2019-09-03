@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g#rl14tr)v5a=%c9*ilc9q#j7(uu)0p$w73$50$+x7hj-gytbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog_Project.urls'
@@ -75,7 +76,9 @@ WSGI_APPLICATION = 'Blog_Project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+import dj_database_url 
+from decouple import config
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -85,8 +88,12 @@ DATABASES = {
         'HOST':'localhost',
         'PORT':'3306'
     }
+}'''
+DATABASES={
+    'default':dj_database_url.config(
+        default=config('DATABASE_URL')
+        )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -105,8 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-MEDIA_URL = '/media/'
-MEDIA_ROOT = "media"
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -125,8 +130,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS=(os.path.join(BASE_DIR, 'static')),
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR, 'static'),
+    )
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '../../'
 LOGOUT_REDIRECT_URL = 'blog/'
@@ -137,4 +147,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'hit.mindblog@gmail.com'
 EMAIL_HOST_PASSWORD = 'hitmind0823'
 EMAIL_USE_TLS = True
+
+import django_heroku
+
+django_heroku.settings(locals())
 
