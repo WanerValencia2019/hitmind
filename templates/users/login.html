@@ -1,11 +1,14 @@
 {% extends 'principal/base.html' %} {% block contenido %} {% block menu %} {% endblock menu %} {% block barraLateral %} {% endblock barraLateral %}
 
 <body>
+    <div class="w-50 mt-5 ml-5 ocultar mb-n5">
+        <a class="btn btn-info border-light  ml-5 tamano" href="{% url 'listar' %}">Regresar</a>
+    </div>
     <div class="div1">
         <section class="centrar d-inline-block ">
             <form class="form-control-lg " method="post" accept-charset="utf-8 ">
                 {% csrf_token %}
-                <h1 class="text-center  mt-n4">Iniciar Sesión</h1>
+                <h1 class="text-center mt-n4">Iniciar Sesión</h1>
                 <label class="badge letter" for="username ">Nombre de Usuario</label><br>
                 <input autocomplete="off " class="form-control form " id="cajatext " type="text " name="username" required=" "></br>
                 <label class=" badge margin-lb letter" for="password">Contraseña</label><br>

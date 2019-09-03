@@ -112,12 +112,23 @@
 .centerH{
     margin-top: 11%;
 }
+
+.tamano{
+    width: 18%;
+}
 @media (max-width: 983px){
     .izquierda{
         margin-left: 0;
         padding-left: 0;
     }
 }
+
+@media (max-width: 989px){
+    .ocultar{
+        display: none;
+    }
+}
+
 @media (max-width: 576px){
     .organizar{
         width: 100%;

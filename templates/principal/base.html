@@ -76,6 +76,9 @@
                 <li class="nav-item  active">
                     <a class="nav-link " href="{% url 'login' %}">Iniciar Sesión</a>
                 </li>
+                <li class="nav-item  active">
+                    <a class="nav-link " href="{% url 'registrar' %}">Registrarse</a>
+                </li>
                 {% endif %} {% if user.is_authenticated %}
                 <strong class="">{{ user.first_name }} {{user.last_name}}</strong> {% endif %}
             </ul>
