@@ -1,0 +1,32 @@
+{% extends 'principal/base.html' %} {% block contenido %}
+<section class="d-flex justify-content-center flex-column ml-4 mt-2 mb-2 mr-4 fondo-blanco">
+    {% if programacion %} {% for articulo in programacion %}
+    <article class="text-justify ml-2 mb-1">
+        <header>
+            <h4 class=""><a class="text-decoration-none" href="{% url 'verARTICULO' articulo.pk %}" title="{{ articulo.titulo}}">{{ articulo.titulo}}</a> </h4>
+            <cite class="text-capitalize font-weight-bold">Autor: {{articulo.autor}}</cite>
+            <br><small class="categoria">Categoría: {{ articulo.categorias.categoria }}</small>
+        </header>
+        <p>{{ articulo.contenido }}</p>
+        <time datetime="{{ articulo.fecha }}">Fecha de publicación: {{articulo.fecha}}</time>
+        <hr/>
+    </article>
+
+    {% endfor %}
+    {% else %}
+        <h2>No hay articulos relacionado a su búsqueda</h2>
+     {% endif %}
+     <ul class="d-inline d-flex list-unstyled ">
+        <li>
+             {% if programacion.has_previous %}
+                 <a class="btn badge-primary " href="?page={{ programacion.previous_page_number }}" title="Anterior">Anterior</a>
+            {% endif %}
+            </li><br>
+            <li>
+                {% if programacion.has_next %}
+                <a class=" btn badge-primary" href="?page={{ programacion.next_page_number }}" title="Anterior">Siguiente</a>
+                {% endif %}
+            </li>
+        </ul>
+</section>
+{% endblock contenido %}

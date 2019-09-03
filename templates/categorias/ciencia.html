@@ -1,0 +1,32 @@
+{% extends 'principal/base.html' %} {% block contenido %}
+<section class="d-flex justify-content-center flex-column mt-2 mb-2 ml-4 mr-4 fondo-blanco">
+    {% if ciencia %} {% for articulo in ciencia %}
+    <article class="text-justify ml-2 mb-1">
+        <header>
+            <h4 class=""><a class="text-decoration-none" href="{% url 'verARTICULO' articulo.pk %}" title="{{ articulo.titulo}}">{{ articulo.titulo}}</a> </h4>
+            <cite class="text-capitalize font-weight-bold">Autor: {{articulo.autor}}</cite>
+            <br><small class="categoria">Categoría: {{ articulo.categorias.categoria }}</small>
+        </header>
+        <p>{{ articulo.contenido }}</p>
+        <time datetime="{{ articulo.fecha }}">Fecha de publicación: {{articulo.fecha}}</time>
+        <hr/>
+    </article>
+
+    {% endfor %}
+    {% else %}
+        <h2>No hay articulos relacionado a su búsqueda</h2>
+     {% endif %}
+     <ul class="d-inline d-flex list-unstyled ">
+        <li>
+             {% if ciencia.has_previous %}
+                 <a class="btn badge-primary " href="?page={{ ciencia.previous_page_number }}" title="Anterior">Anterior</a>
+            {% endif %}
+            </li><br>
+            <li>
+                {% if ciencia.has_next %}
+                <a class=" btn badge-primary" href="?page={{ ciencia.next_page_number }}" title="Anterior">Siguiente</a>
+                {% endif %}
+            </li>
+        </ul>
+</section>
+{% endblock contenido %}

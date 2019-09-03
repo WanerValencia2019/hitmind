@@ -1,0 +1,22 @@
+{% extends 'principal/base.html' %} {% block contenido %} {% block menu %} {% endblock menu %} {% block barraLateral %} {% endblock barraLateral %}
+
+<body>
+    <div class="div1">
+        <section class="centrar d-inline-block ">
+            <form class="form-control-lg " method="post" accept-charset="utf-8 ">
+                {% csrf_token %}
+                <label class="badge " for="username ">Nombre de Usuario</label><br>
+                <input autocomplete="off " class="form-control form " id="cajatext " type="text " name="username" required=" "></br>
+                <label class=" badge margin-lb " for="password">Contraseña</label><br>
+                <input autocomplete="off " class="form-control " id="cajatext " type="password" name="password" required=" "> </br>
+                {% if form.errors %}
+                <p class="alert-warning ">Usuario o Contraseña incorrectos</p>
+                {% endif %}
+                <a class="alert-link link badge-secondary btn-lg " href="{% url 'password_reset' %} " title=" ">Olvidé mi contraseña</a>
+                <a class="alert-link link badge-secondary btn-lg " href="{% url 'registrar' %} " title=" ">Registrarse</a><br>
+                <button class="Cbtn-mt btn btn-outline-light btn-lg " type="submit ">Iniciar Sesión</button>
+            </form>
+        </section>
+    </div>
+</body>
+{% endblock contenido %} {% block footer %} {% endblock footer %}

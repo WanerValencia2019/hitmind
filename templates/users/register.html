@@ -1,0 +1,33 @@
+{% extends 'principal/base.html' %} {% block menu %} {% endblock menu %} {% block contenido %} {% block barraLateral %} {% endblock barraLateral %}
+
+<body>
+    <section class="d-flex justify-content-center ">
+        <form id="formulario" class="w-75" method="post">
+            {% csrf_token %}
+            <h1 class="mt-1">Registrarse</h1>
+            <label class=" font-weight-bold" for="first_name">Nombre</label><br>
+            <input class="form-control" type="text" name="first_name" required=""><br>
+
+            <label class="font-weight-bold" for="last_name">Apellidos</label><br>
+            <input class="form-control mt-n2" type="text" name="last_name" required=""><br>
+
+            <label class="font-weight-bold" for="username">Nombre de Usuario</label><br>
+            <input class="form-control mt-n2" type="text" name="username" required=""><br>
+
+            <label class="font-weight-bold" for="email">Correo</label><br>
+            <input class="form-control mt-n2" type="text" name="email" required=""><br>
+
+            <label class="font-weight-bold"  for="password1">Contraseña</label><br>
+            <input class="form-control mt-n2" type="password" name="password1" required=""><br>
+
+            <label class="font-weight-bold" for="password2">Confirmar Contraseña</label><br>
+            <input class="form-control mt-n2" type="password" name="password2" required=""><br> 
+            {% if form.errors %}
+            <p class="badge-warning">No se pudo registrar tu cuenta revisa, si esta correcta la información</p>
+            {% if form.email.errors %} {% endif %} {% endif%}
+
+            <button class="btn mt-3 btn-success mt-n3 centerBTN2 mb-2" type="">Registrarme</button>
+        </form>
+    </section>
+</body>
+{% endblock contenido %} {% block footer %} {% endblock footer %}

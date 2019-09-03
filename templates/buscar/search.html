@@ -1,0 +1,20 @@
+{% extends 'principal/base.html' %} {% block contenido %}
+
+<hr>
+<section class="article">
+    {% if object_list %} {% for articulo in object_list %}
+    <article class="text-justify">
+        <header>
+            <a href="/media/{{articulo.perfil}}"><img class="imagen-perfil" src="/media/{{articulo.perfil}}" alt="{{articulo.autor}}"></a>
+            <cite>{{articulo.autor}}</cite>
+            <h4 class="text-center"><a href="{% url 'verARTICULO' articulo.pk %}" title="{{ articulo.titulo}}">{{ articulo.titulo}}</a> </h4>
+            <br><small>Categoría: {{ articulo.categorias.categoria }}</small>
+        </header>
+        <p>{{ articulo.contenido }}</p>
+        <time datetime="{{ articulo.fecha }}">Fecha de publicación: {{articulo.fecha}}</time>
+        <hr/>
+    </article>
+    {% endfor %} {% endif %}
+</section>
+
+{% endblock contenido %}

@@ -1,0 +1,146 @@
+{% extends 'principal/base.html' %}
+
+{% block contenido %}
+
+<div class="organizar">
+       <div class=" caja1 mr-3 mt-5 d-none d-sm-block">
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Buscar Articulo</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <form method="get" class="w-100"> 
+              <input type="text" class="form-control form-control-lg" name="search" placeholder="Titulo o Nombre">
+              <span class="input-group-btn">
+                <button class="btn btn-outline-primary mt-1 centerBTN" type="submit">Search</button>
+              </span>
+              </form>  
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categorias</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="{% url 'tecnologia' %}">Tecnología</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'ciencia' %}">Ciencia</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'politica' %}">Política</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="{% url 'religion' %}">Religión</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'deportes' %}">Deportes</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'programacion' %}">Programación</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="{% url 'actualidad' %}">Actualidad Mundial</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'choco' %}">Chocó-Colombia</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="{% url 'musica' %}">Música</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'entretenimiento' %}">Entretenimiento</a>
+                  </li>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Informes de Mejoras</h5>
+          <div class="card-body">
+            <blockquote>
+              <p></p>
+            </blockquote>
+            <blockquote >
+              <p></p>
+            </blockquote>
+            <blockquote>
+               <p></p>
+             </blockquote> 
+             <blockquote>
+               <p></p>
+             </blockquote>
+             <blockquote>
+               <p></p>
+             </blockquote>
+          </div>
+        </div>
+
+      </div> 
+
+
+
+<div class="float-left mt-3 caja2">
+  <section class=" container float-left">
+    <section class=" container-fluid  d-flex align-items-center h-auto justify-content-center flex-column ">
+        <h1 class="card-title font-weight-bold font-italic display-5">Hit Mind</h1>
+        <!-- <form method="get" class="form-check-inline form-group">
+            <input class=" form-control col-xl-12 " name="searc" type="text" id="titulo" placeholder="Buscar Articulo" aria-label="Search">
+            <button class="btn btn-outline-primary ml-2" type="submit">Search</button>
+        </form>  -->
+    </section>
+</section>
+<section class="article cambiando mt-n1 float-left fondo-blanco">
+    {% if object_list %} {% for articulo in object_list %}
+    <article class="text-justify ml-2">
+        <header>
+            <h4 class="font-weight-bold font-italic color"><a class="text-decoration-none" href="{% url 'verARTICULO' articulo.pk %}" title="{{ articulo.titulo}}">{{ articulo.titulo}}</a> </h4>
+            <cite class="text-capitalize font-weight-bold">Autor: {{articulo.autor}}</cite>
+            <br><small class="categoria">Categoría: {{ articulo.categorias.categoria }}</small>
+        </header>
+        <p>{{ articulo.descripcion }} <a class="border" href="{% url 'verARTICULO' articulo.pk %}">Leer Mas...</a></p> 
+        <time datetime="{{ articulo.fecha }}">Fecha de publicación: {{articulo.fecha}}</time>
+        <hr/>
+    </article>
+
+    {% endfor %}
+    {% else %}
+        <h2>No hay articulos relacionado a su búsqueda</h2>
+     {% endif %}
+     <ul class="d-inline d-flex list-unstyled ">
+        <li>
+             {% if object_list.has_previous %}
+                 <a class="btn badge-primary " href="?page={{ object_list.previous_page_number }}" title="Anterior">Anterior</a>
+            {% endif %}
+            </li><br>
+            <li>
+                {% if object_list.has_next %}
+                <a class=" btn badge-primary" href="?page={{ object_list.next_page_number }}" title="Anterior">Siguiente</a>
+                {% endif %}
+            </li>
+        </ul>
+    </section>
+</div>
+</div>
+{% endblock contenido %}

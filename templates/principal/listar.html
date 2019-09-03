@@ -1,0 +1,15 @@
+{% load staticfiles %} {% extends 'principal/base.html' %} {% block contenido %}
+<section>
+    {% if object_list %} {% for articulo in object_list %}
+    <article>
+        <header>
+
+        </header>
+
+
+    </article>
+
+    {% endfor %} {% endif %}
+</section>
+
+{% endblock contenido %}

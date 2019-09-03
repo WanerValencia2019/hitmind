@@ -1,0 +1,15 @@
+{% extends 'principal/base.html' %} {% block contenido %}
+<section class="fondo-blanco mt-1 mb-1 ml-5 mr-5">
+    <article class="text-justify mt-1 ml-5 mr-5 mb-3">
+        <header>
+            <h3 class="text-center">{{ articulo.titulo }}</h3>
+        </header>
+        <strong><cite>{{articulo.autor}}</cite></strong>
+        <p>Categoría: {{articulo.categorias.categoria}}</p>
+        <hr>
+        <p>{{articulo.contenido|linebreaks}}</p>
+        <time datetime="{{articulo.fecha}}">Fecha de publicación: {{articulo.fecha}}</time>
+    </article>
+</section>
+
+{% endblock contenido %}
