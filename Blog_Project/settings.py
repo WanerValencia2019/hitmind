@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g#rl14tr)v5a=%c9*ilc9q#j7(uu)0p$w73$50$+x7hj-gytbq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,7 +136,7 @@ STATICFILES_DIRS=(
     os.path.join(BASE_DIR, 'static'),
     )
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '../../'
 LOGOUT_REDIRECT_URL = 'blog/'
