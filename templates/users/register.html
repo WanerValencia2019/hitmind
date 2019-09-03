@@ -1,10 +1,14 @@
 {% extends 'principal/base.html' %} {% block menu %} {% endblock menu %} {% block contenido %} {% block barraLateral %} {% endblock barraLateral %}
 
 <body>
+     <div class="w-25 mt-5 ml-5 mb-n5">
+        <a class="btn btn-info border-light  ml-5  w-25" href="{% url 'listar' %}">Regresar</a>
+    </div>
+        
     <section class="d-flex justify-content-center ">
         <form id="formulario" class="w-75" method="post">
             {% csrf_token %}
-            <h1 class="mt-1">Registrarse</h1>
+            <h1 class="text-center mt-1">Registrarse</h1>
             <label class=" font-weight-bold" for="first_name">Nombre</label><br>
             <input class="form-control" type="text" name="first_name" required=""><br>
 
@@ -26,7 +30,7 @@
             <p class="badge-warning">No se pudo registrar tu cuenta revisa, si esta correcta la información</p>
             {% if form.email.errors %} {% endif %} {% endif%}
 
-            <button class="btn mt-3 btn-success mt-n3 centerBTN2 mb-2" type="">Registrarme</button>
+            <button class="d-flex mx-auto btn mt-3 btn-success mt-n3  mb-2" type="">Registrarme</button>
         </form>
     </section>
 </body>

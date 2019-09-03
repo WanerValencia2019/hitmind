@@ -27,7 +27,7 @@ class CrearArticulo(ListView):
 
 def crearArticulo(request):
 	queryset=request.GET.get('search')
-	object_list=Articulo.objects.filter(estado=True).order_by('fecha').reverse()
+	object_list=Articulo.objects.all().order_by('fecha').reverse()
 	paginator=Paginator(object_list,5)
 	try:
 		pagina=int(request.GET.get("page",'1'))

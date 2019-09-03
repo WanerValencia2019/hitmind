@@ -1,10 +1,11 @@
 {% extends 'principal/base.html' %} {% block contenido %}
-<section>
-    <form method="post" class="form-group ml-4 mt-3 w-75 font-weight-bold" enctype="multipart/form-data">
+<section class="d-flex justify-content-center">
+    <form method="post" class="form-group  mt-3 w-75 font-weight-bold" enctype="multipart/form-data">
         {% csrf_token %} 
+        <h3 class="text-center h3  font-weight-bold font-italic "> CREAR ARTICULO</h3>
         {{ form.as_p }}
         <p class="badge-warning text-center">Recuerda que tu articulo debe ser habilitado por el administrador para ser publicado</p>
-        <button class="btn-lg btn-outline-primary correr" type="submit">Publicar</button>
+        <button class="d-flex mx-auto btn-lg btn-outline-primary " type="submit">Publicar</button>
 
     </form>
 

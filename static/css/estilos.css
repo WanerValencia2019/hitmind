@@ -50,6 +50,10 @@
 }
 .correr{
     margin-left: 40%;
+    margin-right:40%;
+}
+.letter{
+    font-size: 90%;
 }
 
 
@@ -107,6 +111,12 @@
 }
 .centerH{
     margin-top: 11%;
+}
+@media (max-width: 983px){
+    .izquierda{
+        margin-left: 0;
+        padding-left: 0;
+    }
 }
 @media (max-width: 576px){
     .organizar{

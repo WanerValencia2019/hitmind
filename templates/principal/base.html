@@ -40,13 +40,14 @@
           Categorías
         </a>
         <div class="dropdown-menu color1 text-color" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Todas las categorias</a>
+                        <a class="dropdown-item disabled" href="#">Todas las categorias</a>
                         <a class="dropdown-item" href="{% url 'tecnologia' %}">Tecnología</a>
                         <a class="dropdown-item" href="{% url 'religion' %}">Religion</a>
                         <a class="dropdown-item" href="{% url 'deportes' %}">Deportes</a>
                         <a class="dropdown-item" href="{% url 'programacion' %}">Programación</a>
                         <a class="dropdown-item" href="{% url 'actualidad' %}">Actualidad Mundial</a>
                         <a class="dropdown-item" href="{% url 'politica' %}">Política</a>
+                        <a class="dropdown-item" href="{% url 'choco' %}">Chocó-Colombia</a>
                     </div>
       </li>
                 
@@ -62,9 +63,9 @@
           Opciones
         </a>
         <div class="dropdown-menu color1 text-color" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Cambiar Foto Perfil</a>
-                        <a class="dropdown-item" href="#">Cambiar Usuario</a>
-                        <a class="dropdown-item" href="#">Cambiar Contraseña</a>
+                        <a class="dropdown-item disabled" href="#">Cambiar Foto Perfil</a>
+                        <a class="dropdown-item disabled" href="#">Cambiar Usuario</a>
+                        <a class="dropdown-item disabled" href="#">Cambiar Contraseña</a>
                     </div>
               </li>
                 {% endif %} {% if user.is_authenticated %}
