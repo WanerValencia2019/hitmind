@@ -24,7 +24,7 @@ class CrearArticulo(ListView):
     template_name ='principal/index.html'
 
 
-
+#Con esta vemos los articulos el nombre esta malo
 def crearArticulo(request):
 	queryset=request.GET.get('search')
 	object_list=Articulo.objects.all().order_by('fecha').reverse()
